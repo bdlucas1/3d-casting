@@ -4,7 +4,9 @@ I've been experimenting with directly printing water-soluble molds for
 casting metal pieces, with some success. The mold is printed from PVA,
 the molten metal is poured into the printed mold, and then the mold is
 dissolved away in hot water. This allows very complex shapes to be
-cast.
+cast. I have uploaded some models for printing molds to my
+[3d printed molds for metal casting](https://www.printables.com/@BruceLucas_19742/collections/1998490)
+collection at printables.com.
 
 It may seem surprising that you can make a metal casting using a
 plastic mold, but the metal used is a low-melting point alloy of tin
