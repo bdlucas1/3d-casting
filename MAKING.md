@@ -53,7 +53,7 @@
 * Load the .3mf file into the slicer, and when the dialog asks to
   treat this as a single multi-part object, say yes.
 
-* Even though we have multiple parts, this is a single-filament print,
+* Even though there are multiple parts, this is a single-filament print,
   so set both parts to use the same extruder, and disable wipe tower
   if necessary (Print Settings, Multiple Extruders, Disable).
 
