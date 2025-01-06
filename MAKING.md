@@ -95,6 +95,12 @@
   "sponge", no perimeters. This allows the cooling water to reach the
   mold.
 
+* For some of the models that I've uploaded the slicer may warn you
+  of inadequate bed adhesion, probably in part because the infill forming
+  the support is being printed directly on the plate without a solid first
+  layer. However I've found that with the 25% rectilinear infill and glue
+  stick on PEI the bed adhesion is more than sufficient, and in fact it
+  can be a little hard to remove the PVA.
 
 ### Printing the mold
 
