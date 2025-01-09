@@ -23,10 +23,14 @@
   sanding it), cadmium (really toxic), and/or indium (insanely
   expensive).
 
-* Hot plate and pot for melting the alloy. If you use your stove and
-  favorite saucepan I'm not responsible for damage. I use a small 4"
+* Hot plate, pot for melting the alloy, and a trivet or heat-resistant
+  pad to set the hot pot on after pouring the metal.  I use a small 4"
   500 W hot plate and a similarly sized heavy stainless steel butter
-  melting pot.
+  melting pot. (If you use your stove and favorite saucepan I'm not
+  responsible for damage.)
+
+* I put the hotplate on a timed outlet and set it for half an hour
+  because I don't trust myself to always remember to turn it off.
 
 * Safety equipment: goggles, oven mitts, long sleeved shirt and pants,
   shoes, tongs. The molten metal can burn you badly if you mishandle
