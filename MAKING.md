@@ -34,9 +34,10 @@
   shoes, tongs. The molten metal can burn you badly if you mishandle
   it, and you really don't want any splashing into your eyes.
 
-* Container (plastic will do) wider than the printed mold and ideally
-  taller than the piece itself, but a little shorter than the top of
-  the funnel, making pouring the molten metal into the mold easier.
+* Container (plastic will do) to place the mold in when pouring. It should
+  be wider than the printed mold and ideally taller than the piece itself,
+  but a little shorter than the top of the funnel, making pouring
+  the molten metal into the mold easier.
 
 * Cool water to pour over the mold to cool it and keep it from
   deforming until the hot metal has started to solidify.
@@ -58,9 +59,9 @@ equivalent settings.
 
 * Filament
 
-  PrusaSlicer doesn't have a generic PVA profile so we start with
-  PrimaSelect PVA+, turn fan on to help with curled overhangs, and
-  bump temp by 10 °C to compensate.
+  PrusaSlicer doesn't have a generic PVA profile so I started with
+  PrimaSelect PVA+, turned fan on to help with curled overhangs, and
+  bumped temp by 10 °C to compensate.
 
     * "PrimaSelect PVA+" profile
     * Cooling: keep fan always on
