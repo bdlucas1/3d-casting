@@ -1,7 +1,3 @@
-# with glue stick on PEI the support sticks quite well
-# and foot sticks too much, hard to get off
-# so currently I think don't use foot
-
 knot_3_1-tube:
     load:
         part_fn: knots/knot_3_1-tube-r14d7.obj
@@ -156,6 +152,8 @@ rings:
           - [-2.8365890979766846, -3.1880881786346436, 7.570079326629639]
           - [-1.3383828401565552, 4.044281005859375, 7.570079326629639]
           - [4.17564058303833, -0.8696399331092834, 7.570079326629639]
+
+#
 frog:
     load:
         part_fn: models/frog.stl
@@ -181,6 +179,7 @@ frog:
         position:
           - [-0.7356118, -0.39060886, 25.09205762]
 
+#
 cat-40%:
     load:
         part_fn: models/cat_sitting.stl
@@ -208,6 +207,8 @@ cat-40%:
         diameter: 3
         position:
           - [-16.68870116, -15.78413012, 28.57489695]
+
+#
 bunny:
     load:
         part_fn: models/bunny.ply
@@ -224,7 +225,7 @@ bunny:
     feed:
         position: [-19.74248442694199, -8.929342322662764, 35.05041555047911]
 
-
+#
 bunny-hollow:
     load:
         part_fn: models/bunny.ply
@@ -354,6 +355,8 @@ butterfly-150:
         diameter: 3
         position:
           - [0.0007042347997817418, 10.451133841906493, 8.940931952149455]
+
+#
 dev:
     load:
         part_fn: models/butterfly.3mf
@@ -376,7 +379,6 @@ dev:
         position: [-0.0007042347997817418, -10.451133841906493, 8.940931952149455]
         height: 25
         diameter: 3
-
 
 # weight: 59.92
 # support  deg    wt     pct  time
@@ -408,7 +410,7 @@ cubes:
           - [1.9798986911773682, 2.4563794136047363, 19.075502395629883]
           - [0.8214670419692993, -3.125211477279663, 19.075502395629883]
 
-
+#
 flower:
     load:
         part_fn: imported/flower/flower-1.stl
@@ -430,7 +432,7 @@ flower:
         diameter: 3
         position: [0.3438025860271495, -13.263190387774166, 31.739177315405986]
 
-        
+#        
 dancer:
     load:
         part_fn: imported/dancer/dancer.stl
@@ -497,6 +499,8 @@ demon:
         diameter: 3
         position:
           - [-0.4551653225961337, 21.318463455499668, 29.526637862403522]
+
+#
 angel-singing:
     load:
         part_fn: models/angel-singing.3mf
