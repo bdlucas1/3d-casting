@@ -301,8 +301,7 @@ duck-hollow-3mm:
         position:
           - [10.131700450961242, 18.66737269185613, 12.685408965115732]
 
-
-# better than
+# butterfly
 butterfly-150:
     load:
         part_fn: models/butterfly.3mf
