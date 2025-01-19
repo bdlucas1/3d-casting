@@ -1,3 +1,4 @@
+# trefoil knot tube
 knot_3_1-tube:
     load:
         part_fn: knots/knot_3_1-tube-r14d7.obj
@@ -21,15 +22,11 @@ knot_3_1-tube:
         diameter: 3
         n_feeds: 3
 
-
-# weight: 28.72
-# support  deg    wt   pct  time
-# mine      45  5.17   18%  2h32m
-# slicer    45  5.03   18%  2h33m
+# trefoil knot ribbon
 knot_3_1-ribbon:
     load:
-        part_fn: knots/knot_3_1-ribbon-r14w3,5h7lh0,5.obj
-        path_fn: knots/knot_3_1-r14.npy
+        part_fn: ../3d-knots.git/knots/knot_3_1-ribbon-r14w3,5h7lh0,5.obj
+        path_fn: ../3d-knots.git/knots/knot_3_1-r14.npy
     orient:
         orientation: [0.0, 0.0, 1.0]  # tilt: 0.0 deg
     mold:
@@ -37,13 +34,14 @@ knot_3_1-ribbon:
     #support:
     #    max_overhang_deg: 45
     #    smooth_its: 0
+        cellsize_pct: 1
     vents:
         height: [15, 15, 15]
         diameter: [3, 3, 3]
         position:
-          - [15.219551381238166, -3.9638270402376294, 12.98663409694191]
-          - [-4.177000777565625, 15.162431650473588, 12.986634096941938]
-          - [-11.042550603672503, -11.198604610236005, 12.986634096941945]
+          - [15.219550537105615, -3.9638268066142643, 12.986633604381236]
+          - [-4.17700055782314, 15.162430802621671, 12.986633604381263]
+          - [-11.042549979282448, -11.198603996007485, 12.986633604381264]
     feed:
         height: 25
         diameter: 3
@@ -77,27 +75,27 @@ knot_4_1-tube:
 # TODO: use a better orientation 
 knot_4_1-ribbon:
     load:
-        part_fn: knots/knot_4_1-ribbon-r14w3,5h7lh0,7.obj
-        path_fn: knots/knot_4_1-r14.npy
+        part_fn: ../3d-knots.git/knots/knot_4_1-ribbon-r14w3,5h7lh0,7.obj
+        path_fn: ../3d-knots.git/knots/knot_4_1-r14.npy
     orient:
-        orientation: [0.0, 0.0, 1.0]
+        orientation: [0.0, 0.0, 1.0]  # tilt: 0.0 deg
     mold:
         thickness: 2.5
-    support:
-        max_overhang_deg: 45
-        smooth_its: 0
+    #support:
+    #    max_overhang_deg: 45
+    #    smooth_its: 0
     vents:
         height: [15, 15]
         diameter: [3, 3]
         position:
-          - [-11.227033285261301, 3.8268590415803003, 26.887447713188507]
-          - [11.227033285261369, -3.8268590415800854, 26.887447713188507]
+          - [-11.227032789186355, 3.826858831196987, 26.88744675877771]
+          - [11.227032789186385, -3.826858831196763, 26.887446758777713]
     feed:
         height: 25
         diameter: 3
         n_feeds: 2
 
-
+# 5 crossing knot tube        
 knot_5_1-tube:
     load:
         part_fn: knots/knot_5_1-tube-r14d7.obj
@@ -125,7 +123,7 @@ knot_5_2-tube:
     feed:
         n_feeds: 2
 
-
+# rings
 rings:
     load:
         part_fn: models/rings.3mf
@@ -153,7 +151,7 @@ rings:
           - [-1.3383828401565552, 4.044281005859375, 7.570079326629639]
           - [4.17564058303833, -0.8696399331092834, 7.570079326629639]
 
-#
+# frog
 frog:
     load:
         part_fn: models/frog.stl
@@ -172,14 +170,14 @@ frog:
         height: [15]
         diameter: [3]
         position:
-          - [-1.7037948555119513, -10.03632811529458, 29.46861568476428]
+          - [-1.703794855511953, -10.03632811529458, 29.46861568476428]
     feed:
         height: 25
         diameter: 3
         position:
           - [-0.7356118, -0.39060886, 25.09205762]
 
-#
+# cat
 cat-40%:
     load:
         part_fn: models/cat_sitting.stl
@@ -208,7 +206,7 @@ cat-40%:
         position:
           - [-16.68870116, -15.78413012, 28.57489695]
 
-#
+# stanford bunny
 bunny:
     load:
         part_fn: models/bunny.ply
@@ -225,7 +223,7 @@ bunny:
     feed:
         position: [-19.74248442694199, -8.929342322662764, 35.05041555047911]
 
-#
+# hollow version
 bunny-hollow:
     load:
         part_fn: models/bunny.ply
@@ -245,9 +243,7 @@ bunny-hollow:
     feed: {}
 
 
-# ..finishing up removing
-# 4mm feed - worked well, make that the default, try on knots?
-# poured at 190, doused with ice water - worked well
+# duck
 duck-hollow:
     load:
         part_fn: models/duck.stl
@@ -276,16 +272,7 @@ duck-hollow:
         diameter: 4
         position: [10.255537645198352, 18.52317538259116, 12.625647921608019]
 
-# printed, but had a tall thin tower which nearly failed
-# increasing min_support_area to 75 gets rid of that tower, but:
-# TODO: try printing with new min_support_area - what will happen where tower used to be?
-# poured at 200, doused with fridge-chilled water - good result
-
-# weight: 45.07
-# support  deg    wt   pct  time
-# mine      45  10.53   23%  3h40m
-# slicer    45  12.36   27%  3h53m <-- try this one
-# slicer    40  10.27   23%  3h46m
+# hollow duck
 duck-hollow-3mm:
     load:
         part_fn: models/duck.stl
@@ -311,26 +298,11 @@ duck-hollow-3mm:
     feed:
         height: 25
         diameter: 4
-        position: [10.131700450961242, 18.66737269185613, 12.685408965115732]
+        position:
+          - [10.131700450961242, 18.66737269185613, 12.685408965115732]
 
 
-# TODO: add for_orientation to vents, feed?
-# TODO: match section names with step names
-# TODO: --debug <section-list>, ditto --force
-# TODO: rename feed.picked to feed.position
-
-
-# a little better than alernative with tilt of 145 deg
-# pour at 200 C good
-# 2-layer raft really helps with first layer and adhesion
-#
-# mold: 25.07 g
-#
-# support  deg    wt     pct  time
-# mine           3.31g   13%  2h08m       C: TODO
-# slicer    65   10.7g   43%  2h39m       A: removing
-# slicer    35    1.8g    7%  2h10m       B: printing
-#
+# better than
 butterfly-150:
     load:
         part_fn: models/butterfly.3mf
@@ -356,7 +328,7 @@ butterfly-150:
         position:
           - [0.0007042347997817418, 10.451133841906493, 8.940931952149455]
 
-#
+# devlopment
 dev:
     load:
         part_fn: models/butterfly.3mf
@@ -380,11 +352,7 @@ dev:
         height: 25
         diameter: 3
 
-# weight: 59.92
-# support  deg    wt     pct  time
-# mine      37  16.57   28%   6h57m
-# slicer    45  11.09   19%   6h49m
-# slicer    40
+# linked cubes
 cubes:
     load:
         part_fn: models/cubes.3mf
@@ -410,7 +378,7 @@ cubes:
           - [1.9798986911773682, 2.4563794136047363, 19.075502395629883]
           - [0.8214670419692993, -3.125211477279663, 19.075502395629883]
 
-#
+# flower
 flower:
     load:
         part_fn: imported/flower/flower-1.stl
@@ -432,7 +400,7 @@ flower:
         diameter: 3
         position: [0.3438025860271495, -13.263190387774166, 31.739177315405986]
 
-#        
+# dancer
 dancer:
     load:
         part_fn: imported/dancer/dancer.stl
@@ -445,15 +413,7 @@ dancer:
     feed: {}
 
         
-# could not get self-generated supports to work:
-#     couldn't make support for wings big enough not to fall over
-#     trying to make them join main body overflowed everywhere
-#     tweaking smoothing, using margin to adjust size did not help
-# success with slicer-generates supports:
-#     honeycomb (rectilinear nope), 60 deg, 0 contact distance, 2 interface layers (0 nope), pei no glue stick
-#     scarf joints helped but slow so trying:
-# surface area: 80.8 cm^2 
-# support: 31% in addition to mold
+# angel
 angel:
     load:
         part_fn: models/angel-v2.3mf

@@ -160,7 +160,7 @@ def load():
     shell = c.get("load.shell", None)
 
     # load files
-    part0 = lib.load(part_fn)
+    part0 = lib.load(part_fn).triangulate()
     path0 = lib.load(path_fn) if path_fn is not None else np.empty((0,3))
     print(f"{part_fn}: {lib.info(part0)}")
     c.finish("load")
@@ -468,12 +468,12 @@ def mold():
 
     # construct the mold (exterior) using the decimated part
     # since we don't care about the quality of the exterior
-    part = c.v.xdecimated
+    part = c.v.xdecimated.triangulate()
     mold_thickness = c.get("mold.thickness", default_mold_thickness)
     cellsize_pct = c.get("mold.cellsize_pct", 1)
 
     # TODO: maybe resolution could be lower to speed up this and subsequent steps?
-    xmold = lib.thicken(part, mold_thickness, cellsize_pct=1)
+    xmold = lib.thicken(part, mold_thickness, cellsize_pct=cellsize_pct)
 
     # for subsequent steps
     if not hasattr(c.v.mold, "thickness"):
