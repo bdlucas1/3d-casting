@@ -1,0 +1,289 @@
+NEXT:
+    compare cracks in duck, angel, demon - commonality?
+    try demon again after drying filament with 180 again (or 190 if warranted)
+    other things to try maybe:
+        bump filament temp to 220?
+        seam aligned not rear
+        filament back to original temp, no fan
+        other roll of filament    
+
+
+
+demon
+    TODO: sculpt nouveau red color?
+    TODO: evaluate seam gap - one being removed is 25%
+    TODO: next slice: remove tongue, increase seam gap to 50%
+
+knot_3_1-ribbon
+    TODO: finish removing, evaluate
+
+butterfly:
+    TODO: compare
+        A: 65 deg
+        B: 35 deg, backwards
+        C: 35 deg, turned 180
+
+cubes:
+    TODO: print
+
+
+
+duck-hollow-3mm
+    TODO: try 45deg supports
+
+
+todo:
+    cubes - finish print, pour
+    rings - print, pour, upload model
+    duck 3mm - slice, reprint 3mm (support??), (pour?), upload model
+    
+uploads
+knot_4_1-ribbon - last check
+
+teapot
+chess set?
+cubes?
+
+
+
+---------------------------
+
+PYPI
+
+https://stackoverflow.com/questions/3658084/how-to-create-upload-and-install-a-package-for-pypi
+
+changes image references and links to use absolute links, e.g.
+    https://github.com/bdlucas1/diff3d/blob/master/examples/lens-clamp-A.stl
+or maybe put code in setup.py to do it?
+
+include readme in setup.py:
+
+from pathlib import Path
+this_directory = Path(__file__).parent
+long_description = (this_directory / "README.md").read_text()
+
+setup(
+    name='an_example_package',
+    # other arguments omitted
+    long_description=long_description,
+    long_description_content_type='text/markdown'
+)
+
+---------------------------    
+
+
+
+split molds.py into two pieces (maybe)
+    generate model (tube, ribbon)       knot-model.py
+    generate mold etc. from that file   knot-mold.py
+move knots.py, knot-model.py (and part of lib??) to separate project??
+
+writeup about testing
+instructables?
+stackexchange / stackoverflow?
+journal?
+onshape fb page
+printables? thingiverse?
+
+old tube - reproduce, post on printables
+data/knot_3_1-tube-r14d7.step
+data/knot_4_1-tube-r14d7.step
+data/knot_5_1-tube-r14d7.step
+data/knot_5_2-tube-r14d7.step
+
+old ribbon - these are kind of funky, probably not interesting
+data/knot_3_1-ribbon-r14d7.{step,stl}
+data/knot_4_1-ribbon-r14d7.{step,stl}
+data/knot_5_1-ribbon-r14d7.step
+data/knot_5_2-ribbon-r14d7.step
+
+new ribbon - good, also have molds, supports, and prints
+data/knot_3_1-r14w3,5h7lh0,5.obj
+data/knot_4_1-r14w3,5h7lh0,7.obj
+
+
+
+
+=== printing
+
+
+
+End gcode
+;
+; unload filament
+; https://forum.prusa3d.com/forum/user-mods-octoprint-enclosures-nozzles/unload-filament-after-print/
+;
+G1 F600 E-30
+;M0 S5 ; why pause?
+G1 F4800 E-450
+
+
+
+PEI sheet (no glue)
+*dry filament*
+
+
+Pour
+
+    
+
+mold: 2.5
+channel: 3
+
+
+=== csg libraries
+
+diff = lib.pycork_difference(a, b) # ps doesn't like; lots of wonky normals
+diff = a.boolean_difference(b)     # pv diff doesn't work well, segfaults sometimes
+diff = csgtool_difference(a, b)    # ps doesn't like; lots of tiny holes
+
+pymeshlab by far the best so far
+also try meshlib??
+
+
+=== using-*:
+
+each has its own .sh
+
+using-build123d
+    current version works
+    increasing segments to 6 was required
+    but still transposing w and h fails in molds (see issue2)
+    sometimes roll hack in molds.py helped
+    frozen for now - don't change without running checks.py 
+
+using-pyvista
+    currently building out
+
+=== venv (but not using atm - using miniforge instead
+
+ppython3 -m venv .venv
+source .venv/bin/activate
+python3 -m pip install xyz
+
+=== minforge
+
+# to install miniforge: see github
+source ~/miniforge/bin/activate 
+#pip3 install ...
+
+
+=== PRINTING
+
+    pla for model, petg for supports (petg for supports profile - lower bed temp)
+    use "soluble full for petg supports" - disables sheath
+    clean nozzles by using "filament purge", clean before reaches temp, stop before starts to purge
+    use satin sheet
+
+
+    --- knot_4_1-best-tube-50x8-xl-n6-t25-pla+petg
+        0.6mm nozzle: nozzle 1 pla part, nozzle 2 supports petg
+        gyroid infill for part
+        "soluble full"
+            default support pattern (rectilinear)
+                try honeycomb??
+            no sheath around support
+        PEI with glue stick
+        got glob on nozzle - bad adhesion, or bad filament
+        after some research, that seems to be wipe tower issue
+
+    --- *-70c
+        oops misread screen so this is not true:
+            bed temp seems to come from first extruder
+        bed temp actually seems to be max (as ChatGPT said)
+        so this had no effect
+            increase PLA to 70
+        so bed temp was still 80
+        so oops this adhesion may be too much :(
+            PEI, no glue stick
+        wipe tower started messy, but eventually settled down ok-ish
+        XXXXXX print ok? can remove from PEI???
+
+    --- knot_3_1-best-tube-v42d8-xl-n6-t25-pla+petgsup
+        petg for support: 70C, no sheath
+        print on plain PEI - good but not too much adhesion for the PETG
+
+    --- knot_3_1-best-tube-v42d8-xl-n6-t25-pla+petgsup-snugger    
+        above with interface spacing 0 and xy sep 0 for a snugger fit - does that improve bottom?
+        set petg to heatbed 70C
+        use satin sheet, monitor bed temp!
+        from prusa:
+            first layer: heatbed temp based on first material loaded in the print
+            second layer onwards: based on first filament loaded in second layer
+        for the above settings this seems to give 70 C for first layer, 60 C for second and later
+            this seems to work ok
+
+    --- knot_3_1-best-tube-f45d8-xl-n6-t25-pla+petgsup
+        print settings: 0.25mm SOLUBLE FULL @XLIS 0.6 - PETG support, no sheath
+            snug supports at default settings except no sheath, as appropriate for PETG
+        support filament: Generic PETG @XL 0.6 - for supports
+            PETG marked as soluble: improves wipe tower (no interleave of filamenents)
+            bed temp 70C: net result is 70 C for first layer, 60 C for second and later
+        satin sheet
+        good result
+
+    --- knot_3_1-best-tube-D48d8-xl-n6-t25-pla+petgsup
+        as above
+        lost wipe tower, so ...
+
+    --- knot_3_1-best-r14d7-xl-n6-t25-pla+petgsup
+        so try PEI for better PLA adhesion, and bed temp 60 so PETG does not adhere too much
+        PETG still adheres too much, so ...
+
+    NEXT
+    --- knot_4_1-tube-r14d7-xl-n6-t24-pla+petgsup
+        ... so, use glue stick under part only (not wipe tower)
+
+---
+
+for knot_4_1:
+    with per=4 needed to stop at end=100e-6 else oscillated or unknotted (?)
+    with per=5 needed to stop at end=10e-6 else oscillated
+    with per=6 could used end=1e-6
+    per=8 very little difference
+    rep=-5 moved more to middle of loop
+    att seemed to make almost no difference
+
+best knot_4_1:
+    per=6
+    rep=-5
+    att=3 (doesn't matter much, but att=2 didn't work for some knots)
+
+best knot_3_1:
+    per=8
+    rep=-5: more compact, taller, less wide than -4 and -3
+    att=3 (doesn't matter much)a
+
+best knot_
+
+best knot_5_2:
+    something weird happened at rep=-5 - sweep failed (end=1e-6)
+        and/or had a kink in it (end=100e-6)
+    problem with sweep?
+    so use rep=-4 instead
+        would prefer -5 as it is more "centered"
+        so look into why sweep is wonky, or try fc
+
+
+--- per=8
+
+it 12940 it/s 1444 rep -3 att 1 max_delta 0.000001 step 0.100 flatness 0.86
+it 10513 it/s 1423 rep -3 att 2 max_delta 0.000001 step 0.100 flatness 0.86
+it 18485 it/s 1422 rep -3 att 3 max_delta 0.000001 step 0.050 flatness 0.86
+it 16914 it/s 1424 rep -3 att 4 max_delta 0.000001 step 0.050 flatness 0.86
+it 15847 it/s 1429 rep -3 att 5 max_delta 0.000001 step 0.050 flatness 0.86
+
+it 52102 it/s 1428 rep -4 att 1 max_delta 0.000001 step 0.050 flatness 0.88
+it 49986 it/s 1425 rep -4 att 2 max_delta 0.000001 step 0.050 flatness 0.88
+it 48528 it/s 1410 rep -4 att 3 max_delta 0.000001 step 0.050 flatness 0.88
+it 47462 it/s 1413 rep -4 att 4 max_delta 0.000001 step 0.050 flatness 0.88
+it 46650 it/s 1406 rep -4 att 5 max_delta 0.000001 step 0.050 flatness 0.88
+
+it 181312 it/s 1417 rep -5 att 2 max_delta 0.000001 step 0.050 flatness 0.90
+it 179618 it/s 1355 rep -5 att 3 max_delta 0.000001 step 0.050 flatness 0.90
+it 178312 it/s 1316 rep -5 att 4 max_delta 0.000001 step 0.050 flatness 0.90
+it 177273 it/s 1376 rep -5 att 5 max_delta 0.000001 step 0.050 flatness 0.90
+
+--- per=6
+
+it 51005 it/s 2192 rep -5 att 2 max_delta 0.000001 step 0.050 flatness 0.90

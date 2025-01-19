@@ -1,0 +1,13 @@
+numpy
+scipy
+pyvista
+vedo
+pymeshlab # 2024-12-7: doesn't work with python3@13; set up venv with python3@12 instead
+pymeshfix
+miniball
+lib3mf
+ruamel.yaml # accepts spec-compliant fp numbers
+alphashape
+
+# DON'T! incompatible with the above
+build123d
