@@ -65,11 +65,11 @@ equivalent settings.
 
   PrusaSlicer doesn't have a generic PVA profile so I started with
   PrimaSelect PVA+, turned fan on to help with curled overhangs, and
-  bumped temp by 15 °C to compensate and to help with adhesion.
+  bumped temp by 20 °C to compensate and to help with adhesion.
 
     * "PrimaSelect PVA+" profile
     * Cooling: keep fan always on
-    * Temperature: bump by 15 °C to 215 °C for all layers
+    * Temperature: bump by 20 °C to 220 °C for all layers
 
 * Print Settings, Support material
 
@@ -102,7 +102,7 @@ equivalent settings.
 
 ### Pouring
 
-* Melt the alloy, heating to 180-200 °C. This is well above its
+* Melt the alloy, heating to 170-190 °C. This is well above its
   melting point, but we need to make sure it will fill the mold before
   solidifying. For smaller pieces you may need a temperature at the
   higher end of the range so it fills the mold, and for larger pieces
