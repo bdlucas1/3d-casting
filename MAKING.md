@@ -64,12 +64,14 @@ equivalent settings.
 * Filament
 
   PrusaSlicer doesn't have a generic PVA profile so I started with
-  PrimaSelect PVA+, turned fan on to help with curled overhangs, and
-  bumped temp by 20 °C to compensate and to help with adhesion.
+  PrimaSelect PVA+, turned fan on and enabled auto cooling to help
+  reduce curled overhangs, and bumped temp by 20 °C to compensate and
+  to help with adhesion.
 
     * "PrimaSelect PVA+" profile
     * Cooling: keep fan always on
     * Temperature: bump by 20 °C to 220 °C for all layers
+    * Enable auto cooling: on
 
 * Print Settings, Support material
 
@@ -93,12 +95,14 @@ equivalent settings.
 
 * Print Settings, Layers and Perimeters
 
-  The mold is made solid using perimeters. 
+  The mold is made solid using perimeters. Enabling avoid crossing
+  perimeters avoids crashes due to curled overhangs.
 
     * Solid layers, top: 0
     * Solid layers, bottom: 0
     * Perimeters: 1000
     * Seam position: rear
+    * Avoid crossing perimeters: on
 
 ### Pouring
 
