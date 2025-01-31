@@ -212,6 +212,7 @@ def load():
 
     # do shell after decimating so we can shell the decimated model as well
     if shell is not None:
+        print("shelling")
         if isinstance(shell, dict):
             part0, decimated0 = lib.shell(part0, decimated0, **shell)
         else:
@@ -222,7 +223,8 @@ def load():
     # fix is slightly non-deterministic so radius varies slightly,
     # so round it to make tests deterministic
     print("computing sphere")
-    center, r2 = lib.bounding_ball(decimated0.points)
+    hack = [1e-12, 2e-12, 3e-12] # avoids singular matrix in symmetrical cases, apparently
+    center, r2 = lib.bounding_ball(np.array(decimated0.translate(hack).points))
     c.v.sphere_radius = np.round(np.sqrt(r2), 4)
     c.finish("bounding ball")
 
@@ -471,9 +473,15 @@ def mold():
     part = c.v.xdecimated.triangulate()
     mold_thickness = c.get("mold.thickness", default_mold_thickness)
     cellsize_pct = c.get("mold.cellsize_pct", 1)
+    decimate_to = c.get("mold.decimate", 1)
+
+    # may help mold to set to 0.5, but leave default at 1 for compatibility
+    part = part.decimate(target_reduction = 1 - decimate_to)
 
     # TODO: maybe resolution could be lower to speed up this and subsequent steps?
-    xmold = lib.thicken(part, mold_thickness, cellsize_pct=cellsize_pct)
+    c.dbg("thickening", part.alpha(0.2), part.points)
+    xmold = lib.thicken(part.decimate(0.5), mold_thickness, cellsize_pct=cellsize_pct)
+    print("done")
 
     # for subsequent steps
     if not hasattr(c.v.mold, "thickness"):

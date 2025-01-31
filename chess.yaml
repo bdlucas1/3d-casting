@@ -1,0 +1,137 @@
+# rook
+chess-rook:
+    load:
+        part_fn: models/chess-rook.3mf
+        scale: 1000
+        decimated_faces: 350
+    orient:
+        orientation: [0.0, 0.49999999999999967, -0.866025403784439]  # tilt: 150.0 deg
+    mold:
+        thickness: 2.5
+    vents:
+        height: [15]
+        diameter: [3]
+        position:
+          - [0.29621031880378723, 3.671485185623169, 25.773862838745117]
+    feed:
+        height: 25
+        diameter: 3
+        position:
+          - [0.5312477889950965, 13.563692416990161, 19.47110717177872]
+
+# knight
+chess-knight:
+    load:
+        part_fn: models/chess-knight.3mf
+        scale: 1000
+        decimated_faces: 350
+        rotate: [0, 0, 180]
+        #shell: 5
+    orient:
+        orientation: [0.0, 0.49999999999999967, -0.866025403784439]  # tilt: 150.0 deg
+    mold:
+        thickness: 2.5
+    vents:
+        height: [15, 15]
+        diameter: [3, 3]
+        position:
+          - [-0.38740044832229614, -0.7203245162963867, 29.619657516479492]
+          - [0.05932347849011421, -16.975990295410156, 1.4603022336959839]
+    feed:
+        height: 25
+        diameter: 3
+        position:
+          - [-0.4887738325232626, 15.13581172932916, 19.712648413138535]
+
+# bishop
+chess-bishop:
+    load:
+        part_fn: models/chess-bishop.3mf
+        scale: 1000
+        decimated_faces: 250
+        #shell: 5
+    orient:
+        orientation: [0.0, 0.49999999999999967, -0.866025403784439]  # tilt: 150.0 deg
+    mold:
+        thickness: 2.5
+    vents:
+        height: [15]
+        diameter: [3]
+        position:
+          - [0.8175634145736694, -2.238429307937622, 30.376468658447266]
+    feed:
+        height: 25
+        diameter: 3
+        position:
+          - [0.4667171522549166, 9.361983901608465, 23.087255626547666]
+
+# bishop
+chess-queen:
+    load:
+        part_fn: models/chess-queen.3mf
+        scale: 1000
+        decimated_faces: 500
+        #shell: 5
+    orient:
+        orientation: [0.0, 0.49999999999999967, -0.866025403784439]  # tilt: 150.0 deg
+    mold:
+        thickness: 2.5
+    vents:
+        height: [15]
+        diameter: [3]
+        position:
+          - [-0.3426961600780487, 2.7924721240997314, 38.67322540283203]
+    feed:
+        height: 25
+        diameter: 3
+        position:
+          - [-0.03465445238966795, 15.52512595595218, 30.581917682430063]
+
+# queen
+chess-queen-hollow:
+    load:
+        part_fn: models/chess-queen.3mf
+        scale: 1000
+        decimated_faces: 500
+        shell: 4
+    orient:
+        orientation: [-0.6427876096865394, 0.0, 0.7660444431189782]  # tilt: 40.0 deg
+    mold:
+        thickness: 2.5
+        decimate: 0.5
+    vents:
+        height: [15, 15]
+        diameter: [3, 3]
+        position:
+          - [18.686201505491695, -0.22567547587438397, 34.42130244147265]
+          - [6.134143449908715, 0.12934606047586628, 28.50563971060381]
+    feed:
+        height: 25
+        diameter: 3
+        position:
+          - [26.85583480798277, -0.2937460755064303, 26.714465096716815]
+
+
+# king
+chess-king-hollow:
+    load:
+        part_fn: models/chess-king.3mf
+        scale: 1000
+        decimated_faces: 450
+        shell: 3.8
+    orient:
+        orientation: [-0.6427876096865394, 0.0, 0.7660444431189782]  # tilt: 40.0 deg
+    mold:
+        thickness: 2.5
+        decimate: 0.3
+    vents:
+        height: [15, 15]
+        diameter: [3, 3]
+        position:
+          - [3.6439047794706294, -0.07324193052344175, 30.593347924861867]
+          - [18.671535338529075, -0.033126335659550143, 34.43177362031269]
+    feed:
+        height: 25
+        diameter: 3
+        position:
+          - [28.084975586382537, 0.17394426797033377, 25.687829948094237]
