@@ -1,3 +1,25 @@
+# pawn
+chess-pawn:
+    load:
+        part_fn: models/chess-pawn.3mf
+        scale: 1000
+        decimated_faces: 300
+    orient:
+        orientation: [0.0, 0.49999999999999967, -0.866025403784439]  # tilt: 150.0 deg
+    mold:
+        thickness: 2.5
+    vents:
+        height: [15]
+        diameter: [3]
+        position:
+          - [0.006457000970840454, -0.7628800868988037, 20.775226593017578]
+    feed:
+        height: 25
+        diameter: 3
+        position:
+          - [0.2816132486990831, 12.279451191122831, 12.513869824903287]
+
+
 # rook
 chess-rook:
     load:
@@ -65,7 +87,7 @@ chess-bishop:
         position:
           - [0.4667171522549166, 9.361983901608465, 23.087255626547666]
 
-# bishop
+# queen
 chess-queen:
     load:
         part_fn: models/chess-queen.3mf
@@ -118,7 +140,7 @@ chess-king-hollow:
         part_fn: models/chess-king.3mf
         scale: 1000
         decimated_faces: 450
-        shell: 3.8
+        shell: 4.5
     orient:
         orientation: [-0.6427876096865394, 0.0, 0.7660444431189782]  # tilt: 40.0 deg
     mold:
@@ -134,4 +156,4 @@ chess-king-hollow:
         height: 25
         diameter: 3
         position:
-          - [28.084975586382537, 0.17394426797033377, 25.687829948094237]
+          - [27.78778938142311, -0.27960288361169333, 25.938228832769862]

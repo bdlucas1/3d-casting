@@ -1,3 +1,12 @@
+king using nxp but (no auto cool) did NOT have massive curling
+pawn experiment:
+    A: pawn with ixp, no auto cool, sharp edge perpendicular to air stream: MASSIVE CURLING on sharp overhang
+    B: above turned sideways (like king, queen) so that sharp edge faces left towards air stream: NO CURLING
+    C: above turned 180 (opposite king, queen) so that sharp edge faces right away from air: TODO
+        TODO: print C, already uploaded and named *pawn*180*
+        pour B, C, compare quality of result
+
+
 NEXT:
     compare cracks in duck, angel, demon - commonality?
     try demon again after drying filament with 180 again (or 190 if warranted)
