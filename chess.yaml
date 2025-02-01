@@ -88,28 +88,6 @@ chess-bishop:
           - [0.4667171522549166, 9.361983901608465, 23.087255626547666]
 
 # queen
-chess-queen:
-    load:
-        part_fn: models/chess-queen.3mf
-        scale: 1000
-        decimated_faces: 500
-        #shell: 5
-    orient:
-        orientation: [0.0, 0.49999999999999967, -0.866025403784439]  # tilt: 150.0 deg
-    mold:
-        thickness: 2.5
-    vents:
-        height: [15]
-        diameter: [3]
-        position:
-          - [-0.3426961600780487, 2.7924721240997314, 38.67322540283203]
-    feed:
-        height: 25
-        diameter: 3
-        position:
-          - [-0.03465445238966795, 15.52512595595218, 30.581917682430063]
-
-# queen
 chess-queen-hollow:
     load:
         part_fn: models/chess-queen.3mf
