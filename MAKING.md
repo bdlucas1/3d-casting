@@ -61,6 +61,27 @@
 These instructions are for PrusaSlicer. Your slicer probably has
 equivalent settings.
 
+* The orientation of the model is important for some of the molds that
+  I have
+  [uploaded](https://www.printables.com/@BruceLucas_19742/collections/1998490).
+  A number of the models with flat bottoms have been oriented
+  more-or-less upside down with the flat bottom of the model towards
+  the top of the mold at an angle to the horizontal, so that the feed
+  and vents enter on a less visible portion of the model. This creates
+  a sharp overhang that can be prone to curling, resulting in poor
+  print quality and, in extreme cases, print failure if the extruder
+  crashes into the curled edge.
+
+  In order to control curling it is import to orient the mold so that
+  the sharp edge of the overhang faces directly into the cooling
+  airflow, allowing air to flow over both the top and the bottom of
+  the overhang for even cooling. The models that I have
+  [uploaded](https://www.printables.com/@BruceLucas_19742/collections/1998490)
+  are oriented with the sharp overhang facing to the left, because the
+  airflow comes from the left on my Prusa XL. You may need to adjust
+  the orientation for your printer.
+
+
 * Filament
 
   PrusaSlicer doesn't have a generic PVA profile so I started with
