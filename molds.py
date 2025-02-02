@@ -1300,6 +1300,8 @@ def feed():
 @c.step()
 def merge():
 
+    rotate = c.get("merge.rotate", 0)
+
     # enable this to debug in case all_union fails
     #lib.all_union.debug = True
 
@@ -1317,6 +1319,10 @@ def merge():
     mold = lib.difference(mold, part)
     c.finish("subtracting part from mold")
     
+    # rotate for better printing quality on overhangs
+    part = part.rotate_z(rotate)
+    mold = mold.rotate_z(rotate)
+
     part.viz = c.v.xpart.viz
     mold.viz = c.v.xmold.viz
 

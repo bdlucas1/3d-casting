@@ -205,6 +205,9 @@ cat-40%:
         diameter: 3
         position:
           - [-16.68870116, -15.78413012, 28.57489695]
+    merge:
+        rotate: 45
+
 
 # stanford bunny
 bunny:
