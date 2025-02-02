@@ -415,28 +415,27 @@ dancer:
 # angel
 angel:
     load:
-        part_fn: models/angel-v2.3mf
+        part_fn: models/angel.3mf
         scale: 1000
         decimated_faces: 10000
-        rotate: [0, 0, 180]
+        rotate: [0, 0, 90]
     orient:
-        orientation: [0.0, 0.7071067811865476, -0.7071067811865475]  # tilt: 135.0 deg
+        orientation: [0.7071067811865476, 0.0, -0.7071067811865475]  # tilt: 135.0 deg
     mold:
         thickness: 2.5
     vents:
         height: [15, 15]
         diameter: [3, 3]
         position:
-          - [-0.06455576419830322, 14.101720809936523, 37.3082275390625]
-          - [0.3407611548900604, -13.66150188446045, 4.4884185791015625]
+          - [14.101720809936523, 0.06455576419830322, 37.3082275390625]
+          - [-13.66150188446045, -0.3407611548900604, 4.4884185791015625]
     feed:
         height: 25
         diameter: 3
         position:
-          - [-0.2759025544491239, 23.14814846332899, 28.258688060960154]
+          - [23.14814846332899, 0.2759025544491239, 28.258688060960154]
 
-
-# had a failure at tilt 145 on the flat base, so decreased to 140 (closer to angel)
+# demon
 demon:
     load:
         part_fn: models/demon.3mf
