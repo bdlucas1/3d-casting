@@ -85,14 +85,12 @@ equivalent settings.
 * Filament
 
   PrusaSlicer doesn't have a generic PVA profile so I started with
-  PrimaSelect PVA+, turned fan on and enabled auto cooling to help
-  reduce curled overhangs, and bumped temp by 20 °C to compensate and
+  PrimaSelect PVA+, turned fan on, and bumped temp by 20 °C to compensate and
   to help with adhesion.
 
     * "PrimaSelect PVA+" profile
     * Cooling: keep fan always on
     * Temperature: bump by 20 °C to 220 °C for all layers
-    * Enable auto cooling: on
 
 * Print Settings, Support material
 
