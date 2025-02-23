@@ -120,7 +120,7 @@ equivalent settings.
     * Solid layers, top: 0
     * Solid layers, bottom: 0
     * Perimeters: 1000
-    * Seam position: rear
+    * Seam position: aligned
     * Avoid crossing perimeters: on
 
 ### Pouring
