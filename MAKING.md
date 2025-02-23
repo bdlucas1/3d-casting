@@ -182,6 +182,8 @@ hard sugar candy. I've found two approaches that work:
 
 * The alloy takes well to copper electroplating, and you can then
   electroplate nickel over the top of the copper for a nice bright
-  finish.
+  finish. You can find a fixture for electroplating and some information
+  regarding electroplating solutions and procedures
+  [here](https://www.printables.com/model/1176961-electroplating-fixture).
 
 
