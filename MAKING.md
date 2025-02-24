@@ -103,7 +103,10 @@ equivalent settings.
   pattern is much sturdier for PVA (albeit a bit slower).  I found
   using a raft to be crucial for adhesion with PVA.
 
-    * Overhang threshold: see model description
+    * Overhang threshold: typically 45-60° as needed to adequately support
+      the mold and to avoid very small isolated support structures.
+      I've included a recommended overhang threshold in the descriptions
+      for each of the models that I've uploaded.
     * Raft layers: 2
     * Top contact Z distance: 0
     * Pattern: Honeycomb
