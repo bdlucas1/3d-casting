@@ -462,6 +462,58 @@ demon:
           - [21.318463455499668, 0.4551653225961337, 29.526637862403522]
 
 
+# benchy
+benchy-mold-unedited:
+    load:
+        part_fn: models/benchy.stl
+        decimated_faces: 8000
+    orient:
+        orientation: [-0.6025050807438374, -0.3669811114645268, -0.7087400733034095]  # tilt: 135.1 deg
+    mold:
+        thickness: 2.5
+    #support:
+    #    max_overhang_deg: 45
+    vents:
+        height: [15]
+        diameter: [3]
+        position:
+          - [0.0894773006439209, 9.348860740661621, 29.42867660522461]
+    feed:
+        height: 25
+        diameter: 3
+        position:
+          - [-3.2019534036875674, 0.6146340362482635, 22.102599491182787]
+    merge:
+        rotate: 135
+
+# benchy
+# for upload
+benchy-mold:
+    load:
+        part_fn: models/benchy-mold.obj
+        decimated_faces: 8000
+    orient:
+        orientation: [-0.6025050807438374, -0.3669811114645268, -0.7087400733034095]  # tilt: 135.1 deg
+    mold:
+        thickness: 2.5
+    #support:
+    #    max_overhang_deg: 45
+    vents:
+        height: [15]
+        diameter: [3]
+        position:
+          - [0.0894773006439209, 9.348860740661621, 29.42867660522461]
+    feed:
+        height: 25
+        diameter: 3
+        position:
+          - [-3.2019534036875674, 0.6146340362482635, 22.102599491182787]
+    merge:
+        rotate: 135
+
+
+
+# template
 REQUIRED:
     load:
         part_fn: REQUIRED
