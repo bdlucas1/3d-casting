@@ -9,8 +9,8 @@ cast. I have uploaded some models for printing molds to my
 collection at printables.com.
 
 It may seem surprising that you can make a metal casting using a
-plastic mold, but the metal used is a low-melting point alloy of tin
-and bismuth (essentially, a relative of pewter), and the metal cools
+plastic mold, but the metal used is a [low-melting point alloy](https://www.rotometals.com/lead-free-fishing-tackle-weight-bismuth-tin-alloy-281/)
+of tin and bismuth (essentially, a relative of pewter), and the metal cools
 quickly on contact with the mold before it has a chance to deform.
 
 There are two parts to making a cast metal part from a 3d-printed
