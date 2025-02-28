@@ -330,7 +330,35 @@ butterfly-150:
         position:
           - [0.0007042347997817418, 10.451133841906493, 8.940931952149455]
 
-# devlopment
+# butterfly
+butterfly-through:
+    load:
+        part_fn: models/butterfly-through.3mf
+        decimated_faces: 5000
+        scale: 1000
+        rotate: [0, 0, 180]
+    orient:
+        orientation: [0.0, 0.6427876096865391, -0.7660444431189782]  # tilt: 140.0 deg
+    mold:
+        thickness: 2.5
+    #support:
+    #    max_overhang_deg: 29
+    vents:
+        height: [15, 15, 15]
+        diameter: [1.5, 2.0, 2.0]
+        position:
+          - [0.0074069807305932045, 23.811830520629883, 17.644668579101562]
+          - [-14.087441444396973, 24.79521942138672, 25.291627883911133]
+          - [14.087428092956543, 24.79521942138672, 25.291627883911133]
+    feed:
+        height: 25
+        diameter: 3
+        position:
+          - [0.01350137579567861, 12.655002795011223, 7.898463639739716]
+    merge:
+        rotate: 90
+
+# dev
 dev:
     load:
         part_fn: models/butterfly.3mf
