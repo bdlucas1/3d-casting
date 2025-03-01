@@ -128,10 +128,10 @@ equivalent settings.
 
 ### Pouring
 
-* Melt the alloy, heating to 170-190 °C. This is well above its
+* Melt the alloy, heating to 170-200 °C. This is well above its
   melting point, but we need to make sure it will fill the mold before
-  solidifying. For smaller pieces you may need a temperature at the
-  higher end of the range so it fills the mold, and for larger pieces
+  solidifying. For thinner pieces with fine detail you may need a temperature at the
+  higher end of the range so it fills the mold, and for thicker pieces
   you may want a temperature at the lower end of the range so the mold
   doesn't deform before the metal solidifies.
 
