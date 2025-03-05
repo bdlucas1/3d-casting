@@ -1092,6 +1092,7 @@ def multi_feed():
             c.start()
             circle = lib.circle(r).transform(align(z=dirn)).translate(c.v.meet)
             new_feed = lib.extrude_to(circle, dirn, target, extra=1e-4)
+            c.dbg("add_feed", new_feed, target)
             return lib.union(feed, new_feed)
 
         part_feed = add_feed(part_feed, part_r, c.v.xpart)
@@ -1122,6 +1123,7 @@ def manual_feed():
     # our inputs
     mold_thickness = c.v.mold.thickness
     feed_diameter = c.get("feed.diameter", default_feed_diameter)
+    feed_length = c.get("feed.length", feed_diameter)
     feed_height = c.get("feed.height", default_feed_height)
     feed_position = c.get("feed.position", [])
     contour_part = c.v.xdecimated.smooth(1000)
@@ -1149,7 +1151,7 @@ def manual_feed():
         picked_face = pick_part.find_closest_cell(position)
         picked_normal = pick_part.cell_normals[picked_face]
         p1 = position - feed_diameter * picked_normal
-        p2 = position + feed_diameter * picked_normal
+        p2 = position + feed_length * picked_normal
         p3 = np.array([p2[0], p2[1], c.v.top])
         pl.part_feed = lib.mouth([p1, p2, p3], feed_diameter, feed_height)
         pl.mold_feed = lib.mouth([p1, p2, p3], mold_diameter, feed_height)

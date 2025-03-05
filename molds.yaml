@@ -331,9 +331,9 @@ butterfly-150:
           - [0.0007042347997817418, 10.451133841906493, 8.940931952149455]
 
 # butterfly
-butterfly-through:
+butterfly-pendant:
     load:
-        part_fn: models/butterfly-through.3mf
+        part_fn: models/butterfly-pendant.3mf
         decimated_faces: 5000
         scale: 1000
         rotate: [0, 0, 180]
@@ -540,6 +540,57 @@ benchy-mold:
         rotate: 135
 
 
+# benchy ring
+benchyring-mold:
+    load:
+        part_fn: models/benchyring-ed.obj
+        decimated_faces: 10000
+    orient:
+        orientation: [-0.3131571031558979, 0.6739205873598065, -0.6691514557076143]  # tilt: 132.0 deg
+    mold:
+        thickness: 2.5
+    vents:
+        height: [15, 15]
+        diameter: [3, 3]
+        position:
+          - [3.387444019317627, -5.286887168884277, 6.223233222961426]
+          - [-8.631303787231445, 8.98627758026123, 17.891130447387695]
+    feed:
+        height: 25
+        diameter: 3
+        position:
+          - [7.966586594895627, -1.6600946727934573, 4.05294173708061]
+        length: 8
+    merge: {}
+
+
+# template
+ring:
+    load:
+        part_fn: models/ring-band.3mf
+        inset_fn: models/ring-insets.3mf
+        decimated_faces: 10000
+        scale: 1000
+    orient:
+        orientation: [0.00012545333088035497, 0.7179034002881424, 0.6961427239555011]  # tilt: 45.9 deg
+    mold:
+        thickness: 2.5
+    vents:
+        height: [12, 12]
+        diameter: [2.0, 2.0]
+        position:
+          - [0.21653427183628082, -9.590353965759277, -3.287701368331909]
+          - [-0.34298476576805115, 6.615200042724609, 9.890202522277832]
+    feed:
+        height: 25
+        diameter: 3
+        position:
+          - [-0.5230231129094179, 9.15264456090577, 7.813445709820421]
+        length: 9
+    merge: {}
+
+        
+
 
 # template
 REQUIRED:
@@ -547,8 +598,9 @@ REQUIRED:
         part_fn: REQUIRED
     orient: {}
     mold: {}
-    support: {}
+    #support: {}
     vents: {}
     feed: {}
+    merge: {}
 
         
