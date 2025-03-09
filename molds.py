@@ -149,6 +149,7 @@ def load():
     # our inputs
     part_fn = c.v.load.part_fn
     path_fn = c.get("load.path_fn", None)
+    inset_fn = c.get("load.inset_fn", None)
 
     # processing inputs
     simplify = c.get("load.simplify", None)
@@ -162,6 +163,7 @@ def load():
     # load files
     part0 = lib.load(part_fn).triangulate()
     path0 = lib.load(path_fn) if path_fn is not None else np.empty((0,3))
+    inset0 = lib.load(inset_fn) if inset_fn is not None else None #pv.PolyData()
     print(f"{part_fn}: {lib.info(part0)}")
     c.finish("load")
 
@@ -184,6 +186,7 @@ def load():
     # scale
     if scale is not None:
         part0 = part0.scale(scale)
+        inset0 = inset0.scale(scale) if inset0 is not None else None
         c.finish("scale")
 
     # clip as requested
@@ -206,7 +209,7 @@ def load():
         decimated0 = lib.decimate(part0, target_faces=decimated_faces)
         c.finish("decimate")
         print(f"decimated: {lib.info(decimated0)}")
-        c.dbg("decimated", decimated0)
+        #c.dbg("decimated", decimated0)
     else:
         decimated0 = part0.copy()
 
@@ -231,10 +234,11 @@ def load():
     # position center at origin
     c.v.part0 = part0.translate(-center).c((0.70, 0.80, 1.0))
     c.v.decimated0 = decimated0.translate(-center).c((0.70, 0.80, 1.0))
+    c.v.inset0 = inset0.translate(-center).c((1,0,0)).alpha(0.3) if inset0 is not None else None
     c.v.sphere = lib.sphere(c.v.sphere_radius).c((1,1,1)).alpha(0.05)
     c.v.path0 = path0 - center
 
-    c.dbg("final load", c.v.part0, c.v.sphere)
+    c.dbg("final load", c.v.part0, c.v.sphere, c.v.inset0)
 
 
 # TODO: move this to lib?
@@ -457,6 +461,7 @@ def orient():
     c.v.xdecimated = lib.apply_xform(pl.xform, c.v.decimated0)
     c.v.xpart = lib.apply_xform(pl.xform, c.v.part0)
     c.v.xpath = lib.apply_xform(pl.xform, c.v.path0)
+    c.v.xinset = lib.apply_xform(pl.xform, c.v.inset0)
     
     # save it in yaml file
     save("orient.orientation", pl.orientation.tolist(), f"tilt: {pl.tilt_deg:.1f} deg")
@@ -480,7 +485,7 @@ def mold():
 
     # TODO: maybe resolution could be lower to speed up this and subsequent steps?
     c.dbg("thickening", part.alpha(0.2), part.points)
-    xmold = lib.thicken(part.decimate(0.5), mold_thickness, cellsize_pct=cellsize_pct)
+    xmold = lib.thicken(part, mold_thickness, cellsize_pct=cellsize_pct)
     print("done")
 
     # for subsequent steps
@@ -990,10 +995,12 @@ def vents():
     #part_vents = [make_vent(vent.position, vent_diameter, xpart) for vent in selected]
     #mold_vents = [make_vent(vent.position, mold_diameter, xmold) for vent in selected]
     selected = [vent for vent in vents if vent.selected]
+    print("calculating part vents")
     part_vents = lib.all_union([
         lib.vent(top(vent.position), vent.diameter, vent.height, to=xpart)
         for vent in selected
     ])
+    print("calculating mold vents")
     mold_vents = lib.all_union([
         lib.vent(top(vent.position), vent.diameter+2*mold_thickness, vent.height, to=xmold)
         for vent in selected
@@ -1009,7 +1016,7 @@ def vents():
     save("vents.height", [vent.height for vent in selected])
 
 
-def multi_feed():
+def auto_feed():
 
     # our inputs
     n_feeds = c.v.feed.n_feeds
@@ -1072,6 +1079,7 @@ def multi_feed():
     feed = [c.v.meet, top]    
     #part_feed = lib.union(part_feed, lib.mouth(feed, 2 * part_r, c.v.top + c.v.feed_height - c.v.meet[2]))
     #mold_feed = lib.union(mold_feed, lib.mouth(feed, 2 * mold_r, c.v.top + c.v.feed_height - c.v.meet[2]))
+    # TODO: use up_to for precise joint - see generate_single_feed in manual_feed
     part_feed = lib.union(part_feed, lib.mouth(feed, 2 * part_r, feed_height))
     mold_feed = lib.union(mold_feed, lib.mouth(feed, 2 * mold_r, feed_height))
 
@@ -1150,11 +1158,11 @@ def manual_feed():
         print("generating single feed at", position)
         picked_face = pick_part.find_closest_cell(position)
         picked_normal = pick_part.cell_normals[picked_face]
-        p1 = position - feed_diameter * picked_normal
+        p1 = position
         p2 = position + feed_length * picked_normal
         p3 = np.array([p2[0], p2[1], c.v.top])
-        pl.part_feed = lib.mouth([p1, p2, p3], feed_diameter, feed_height)
-        pl.mold_feed = lib.mouth([p1, p2, p3], mold_diameter, feed_height)
+        pl.part_feed = lib.mouth([p1, p2, p3], feed_diameter, feed_height, up_to=c.v.xpart) # up_to goes from p1 on surface up to the part
+        pl.mold_feed = lib.mouth([p1, p2, p3], mold_diameter, feed_height, up_to=None) # p1 is on part, already inside mold, so don't need up_to
     
     def generate_meet_points():
         pl.meet_points = []
@@ -1189,6 +1197,7 @@ def manual_feed():
 
     # generate feed for multiple points
     def generate_multi_feed():
+        print("generating multi feed at", pl.position)
         # sort by ascending z
         order = np.argsort([p[2] for p in pl.position])
         for o in order:
@@ -1197,6 +1206,7 @@ def manual_feed():
             if o == order[0]:
                 # lowest gets an elbow and generates the feed
                 p3 = np.array([p2[0], p2[1], c.v.top])
+                # TODO: use up_to for precise joint - see generate_single_feed above
                 pl.part_feed = lib.mouth([p1, p2, p3], feed_diameter, feed_height)
                 pl.mold_feed = lib.mouth([p1, p2, p3], mold_diameter, feed_height)
             else:
@@ -1293,8 +1303,9 @@ def manual_feed():
 @c.step(debug=0, force=0)
 def feed():
 
+    # n_feeds selects auto feed generation
     if hasattr(c.v.feed, "n_feeds"):
-        multi_feed()
+        auto_feed()
     else:
         manual_feed()
 
@@ -1315,6 +1326,7 @@ def merge():
 
     print("calculating mold")
     mold = lib.all_union(c.v.mold_vents, c.v.mold_feed, c.v.xmold)    
+    mold = lib.difference(mold, c.v.xinset)
     c.finish("calculating mold")
 
     print("subtracting part from mold")
@@ -1331,7 +1343,7 @@ def merge():
     c.v.final_part = part
     c.v.final_mold = mold
 
-    c.dbg("final", c.v.final_part, c.v.final_mold)
+    c.dbg("final", c.v.final_part, c.v.final_mold, c.v.xinset)
 
 @c.step(force=0)
 def save():
@@ -1341,6 +1353,7 @@ def save():
     # but 3mf files have embedded uuids - maybe can avoid that?
     mold = lib.canonicalize(c.v.final_mold)
     support = lib.canonicalize(c.v.final_support)
+    inset = lib.canonicalize(c.v.xinset)
 
     fn = f"molds/{c.cache_name}"
     # obj files are very big
@@ -1349,6 +1362,8 @@ def save():
     save = {"mold": mold}
     if support is not None:
         save["support"] = support
+    if inset is not None:
+        save["inset"] = inset
     lib.save(save, f"{fn}.3mf")
 
 @c.step(force=1)

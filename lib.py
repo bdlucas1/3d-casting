@@ -506,6 +506,8 @@ def xform_from_to(a, b=[0,0,1]):
 
 
 def apply_xform(xform, o, inplace=False):
+    if o is None:
+        return None
     if isinstance(o, np.ndarray):
         apply_xform = pv.core.utilities.transformations.apply_transformation_to_points
         return apply_xform(xform, o, inplace=inplace)
@@ -628,6 +630,8 @@ def binary(op, m1, m2):
 
 @timefun
 def difference(m1, m2):
+    if m2 is None:
+        return m1
     return binary("generate_boolean_difference", m1, m2)
 
 
@@ -1067,7 +1071,7 @@ def vent(loc, diameter, height, to):
         downward = extrude_to(circle, (0,0,-1), to, extra=1e-4)
     return union(upward, downward)
 
-def elbow(ps, d):
+def elbow(ps, d, up_to=None):
     r = d / 2
     result = None
     for i, (p1, p2) in enumerate(zip(ps[:-1], ps[1:])):
@@ -1077,16 +1081,21 @@ def elbow(ps, d):
         circle = apply_xform(xform, lib.circle(r)).translate(p1)
         tube = extrude(circle, p2-p1)
         result = union(result, tube)
+        # add bit from from p1 up to up_to in direction p1-p2
+        # useful for joining elbow to part when making a feed
+        if i == 0 and up_to is not None:
+            up_to_extra = extrude_to(circle, p1-p2, up_to, extra=1e-4)
+            result = union(result, up_to_extra)
     return result
 
-def mouth(pos, d, height, angle_deg=22.5):
+def mouth(pos, d, height, angle_deg=22.5, up_to=None):
 
     # always a list
     if not isinstance(pos, (tuple, list)):
         pos = [pos]
 
     # feed elbow, if any
-    result = elbow(pos, d)
+    result = elbow(pos, d, up_to=up_to)
 
     # mouth itself
     r = d / 2
