@@ -117,7 +117,7 @@ if __name__ == "__main__":
         c.tester = viz.compare
     elif args.test == "none":
         c.tester = None
-        c.force = ["none"]
+        #c.force = ["none"]
 
     print("debug:", c.debug)
     print("force:", c.force)
@@ -174,6 +174,7 @@ def load():
     # simplify part itself
     if simplify is not None:
         part0 = part0.decimate(1 - simplify)
+        part0 = lib.fix(part0)  # TODO: don't know why but seems to be needed sometimes
         print(f"after simplify: {lib.info(part0)}")
         c.finish("simplify")
 
@@ -207,6 +208,7 @@ def load():
     # compute decimated model
     if decimated_faces is not None:
         decimated0 = lib.decimate(part0, target_faces=decimated_faces)
+        decimated0 = lib.fix(decimated0) # TODO: don't know why but seems to be needed sometimes
         c.finish("decimate")
         print(f"decimated: {lib.info(decimated0)}")
         #c.dbg("decimated", decimated0)
