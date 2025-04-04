@@ -1,5 +1,47 @@
-king using nxp but (no auto cool) did NOT have massive curling
-pawn experiment:
+3d print, models, stl for 3d printing
+    3/24: posted with pics and links, no approval process
+    3/24: posted with pics, added links in comments. Post did not need review, comments did.
+    3/24: 146/88/7
+
+3d printing community
+    3/27: posted with pics but no links, still needs approval
+    ...: posted links
+
+my timeline:
+    3/27 148/90/7, 1 unique visitor
+
+3d printing for beginners and pros
+f that ill just 3d print it
+3d printing functional things
+
+3d printing world
+
+
+---
+
+I've been experimenting with 3d printing molds for directly casting metal pieces with some success, and I'm looking for ideas for more projects!
+
+The mold is printed from PVA, a readily available low melting point alloy poured into the printed mold, and then the mold is dissolved away in hot water. This allows complex metal pieces to be cast requiring no special equipment beyond a 3d printer and an ordinary hot plate to melt the alloy.
+
+It may seem surprising that you can make a metal casting using a plastic mold, but the metal used is a readily available low-melting point alloy of tin and bismuth (essentially a relative of pewter), and the metal cools quickly on contact with the mold before it has a chance to deform.
+
+The piece can then be easily sanded, filed, and polished, and can be electroplated with copper, nickel, etc. if desired.
+
+I'll put some links to the models and more information in the comments.
+
+Some printable models for molds: https://www.printables.com/@BruceLucas_19742/models
+Information on the casting process: https://github.com/bdlucas1/3d-casting/blob/master/MAKING.md
+Information on the mold design process: https://github.com/bdlucas1/3d-casting
+
+~/Downloads/social for images
+
+
+---
+
+
+
+
+
     A: pawn with ixp, no auto cool, sharp edge perpendicular to air stream: MASSIVE CURLING on sharp overhang
     B: above turned sideways (like king, queen) so that sharp edge faces left towards air stream: NO CURLING
     C: above turned 180 (opposite king, queen) so that sharp edge faces right away from air: TODO
